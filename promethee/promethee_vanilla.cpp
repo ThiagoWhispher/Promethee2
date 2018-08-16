@@ -43,11 +43,12 @@ PrometheeResult PrometheeVanilla::process(Data data){
 
   	}
 
+	ldouble nalternatives = nlines * ncolumns;
 	// applying a not standard normalization (but used by grass)
 	for(int line = 0; line < nlines; line++)
 	for(int column = 0; column < ncolumns; column++){
-		positiveFlow[line][column] /= ncriterias;
-		negativeFlow[line][column] /= ncriterias;
+		positiveFlow[line][column] /= nalternatives - 1;
+		negativeFlow[line][column] /= nalternatives - 1;
 	}
 
 	// calculating global flow
